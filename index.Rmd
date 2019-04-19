@@ -197,6 +197,12 @@ options(htmltools.dir.version = FALSE)
 - Value lifelong learning as an attitude
 
 ---
+# Funding Acknowledgements:
+
+- T15 NLM Training Supplement Grant: 5T15LM007088
+- NCATS Center for Data to Health (CD2H) Grant: U24TR002306
+
+---
 # Keep in Touch!
 
 laderast@ohsu.edu | @tladeras | http://laderast.github.io  
@@ -212,3 +218,4 @@ Learn more about our graduate program!
 - Webinars about 
   - Clinical and Bioinformatics Majors 
   - email Lauren Ludwig: ludwigl@ohsu.edu
+  
