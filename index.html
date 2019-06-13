@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
   <head>
-    <title>Teaching Bioinformatics Students about Clinical Data</title>
+    <title>Conversations about Sleep: Clinical Data Wrangling</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Ted Laderas" />
-    <meta name="date" content="2019-04-19" />
+    <meta name="author" content="Ted Laderas, Nicole Weiskopf and Eilis Boudreau" />
+    <meta name="date" content="2019-06-13" />
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
   </head>
@@ -12,16 +12,18 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Teaching Bioinformatics Students about Clinical Data
-### Ted Laderas
-### 2019-04-19
+# Conversations about Sleep: Clinical Data Wrangling
+### Ted Laderas, Nicole Weiskopf and Eilis Boudreau
+### 2019-06-13
 
 ---
 
 
 
+
 # Introduction: Ted Laderas
 
+.pull-left[ 
 - Assistant Professor
   - Division of Bioinformatics and Computational Biomedicine 
   - Department of Medical Informatics and Clinical Epidemiology
@@ -31,199 +33,558 @@ class: center, middle, inverse, title-slide
   - Interactive Visualization
   - Immunoinformatics
   - Drug Sensitivity/Resistance in Cancer
+  ]
 
+.pull-right[
+![](image/LaderasTed-small.jpg)
+]
 ---
 # Overview
 
-- Why teach bioinformatics students about clinical data?
-  - Encourage translational research
-- How do we teach them?
-  - Clinical Data Wrangling
-  - Data Analytics
-  - BioData Club
-- Who are examples of our success?
-  - Gabby Choonoo
-  - Connor Smith
+- Why clinical data wrangling?
+- Why the workshop?
+- What is the workshop?
+- Components of the workshop
+- Extensions
+- Availability
 
 ---
 # Motivation: Why?
 
+![https://twitter.com/jd_wilko/status/1138899593826131973](image/wilkinson.png)
+
+---
+
+# Applies to Informaticians, Too
+
+![](image/wilkinson-revised.png)
+
+- Emphasize successful informatics being collaboration
 - Research is multi-disciplinary
 - Need for Translational Research Workforce
 - Bridge gaps between computational biology and clinical realms
 
 ---
-# Bioinformatics Students: Clinical Data Opportunities
+# Luckily, there was funding
 
-- Clinical Data Wrangling Workshop
-- BMI569 Data Analytics
-- BioData Club
+- NLM T15 Training Grant Supplement for Data Science
+- Allowed a diverse team to come together:
+    - Eilis Boudreau
+    - Nicole Weiskopf
+    - Me
 
 ---
+
 # Clinical Data Wrangling
 
+- Workshop for incoming graduate students
 - Designed for both clinical and bioinformatics students
+  - Assumes no expertise with R/RStudio
 - Introduce students to data quality issues with clinical data
-- Use Sleep Heart Health Study data
-  - Partnership with http://sleepdata.org
-- http://laderast.github.io/clinical_data_wrangling/
 
-.footnote[Eilis Boudreau, Ted Laderas, Nicole Weiskopf]
 ---
-# The Goal: build a predictive model of Cardiovascular Disease
+
+# Learning Objectives
+
+1. **Understand** the biology of sleep and sleep apnea and how the biology informs the covariates measured in the Sleep Heart Health Study
+1. **Understand** the usefulness and challenges with working with clinical data
+1. **Learn** Exploratory Data Analysis techniques and use them to **inform/analyse** model building
+1. **Evaluate** a predictive model (logistic regression) using simple diagnostics.
+1. **Communicate** your findings in a team setting.
+---
+
+# Challenges: Where to get data?
+
+- Partnership with National Sleep Research Resource 
+    - http://sleepdata.org
+- Sleep Heart Health Study data 
+    - ~5700 patients, 1200 covariates
+- Requires students to sign [data use agreement]()
+
+---
+## Sleep Covariates
+
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#nfmuwtlzpk .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #000000;
+  font-size: 16px;
+  background-color: #FFFFFF;
+  /* table.background.color */
+  width: auto;
+  /* table.width */
+  border-top-style: solid;
+  /* table.border.top.style */
+  border-top-width: 2px;
+  /* table.border.top.width */
+  border-top-color: #A8A8A8;
+  /* table.border.top.color */
+}
+
+#nfmuwtlzpk .gt_heading {
+  background-color: #FFFFFF;
+  /* heading.background.color */
+  border-bottom-color: #FFFFFF;
+}
+
+#nfmuwtlzpk .gt_title {
+  color: #000000;
+  font-size: 125%;
+  /* heading.title.font.size */
+  padding-top: 4px;
+  /* heading.top.padding */
+  padding-bottom: 1px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#nfmuwtlzpk .gt_subtitle {
+  color: #000000;
+  font-size: 85%;
+  /* heading.subtitle.font.size */
+  padding-top: 1px;
+  padding-bottom: 4px;
+  /* heading.bottom.padding */
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#nfmuwtlzpk .gt_bottom_border {
+  border-bottom-style: solid;
+  /* heading.border.bottom.style */
+  border-bottom-width: 2px;
+  /* heading.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* heading.border.bottom.color */
+}
+
+#nfmuwtlzpk .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#nfmuwtlzpk .gt_col_heading {
+  color: #000000;
+  background-color: #FFFFFF;
+  /* column_labels.background.color */
+  font-size: 16px;
+  /* column_labels.font.size */
+  font-weight: initial;
+  /* column_labels.font.weight */
+  vertical-align: middle;
+  padding: 10px;
+  margin: 10px;
+}
+
+#nfmuwtlzpk .gt_sep_right {
+  border-right: 5px solid #FFFFFF;
+}
+
+#nfmuwtlzpk .gt_group_heading {
+  padding: 8px;
+  color: #000000;
+  background-color: #FFFFFF;
+  /* row_group.background.color */
+  font-size: 16px;
+  /* row_group.font.size */
+  font-weight: initial;
+  /* row_group.font.weight */
+  border-top-style: solid;
+  /* row_group.border.top.style */
+  border-top-width: 2px;
+  /* row_group.border.top.width */
+  border-top-color: #A8A8A8;
+  /* row_group.border.top.color */
+  border-bottom-style: solid;
+  /* row_group.border.bottom.style */
+  border-bottom-width: 2px;
+  /* row_group.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* row_group.border.bottom.color */
+  vertical-align: middle;
+}
+
+#nfmuwtlzpk .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #000000;
+  background-color: #FFFFFF;
+  /* row_group.background.color */
+  font-size: 16px;
+  /* row_group.font.size */
+  font-weight: initial;
+  /* row_group.font.weight */
+  border-top-style: solid;
+  /* row_group.border.top.style */
+  border-top-width: 2px;
+  /* row_group.border.top.width */
+  border-top-color: #A8A8A8;
+  /* row_group.border.top.color */
+  border-bottom-style: solid;
+  /* row_group.border.bottom.style */
+  border-bottom-width: 2px;
+  /* row_group.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* row_group.border.bottom.color */
+  vertical-align: middle;
+}
+
+#nfmuwtlzpk .gt_striped {
+  background-color: #f2f2f2;
+}
+
+#nfmuwtlzpk .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#nfmuwtlzpk .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#nfmuwtlzpk .gt_row {
+  padding: 8px;
+  /* row.padding */
+  margin: 10px;
+  vertical-align: middle;
+}
+
+#nfmuwtlzpk .gt_stub {
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #A8A8A8;
+  padding-left: 12px;
+}
+
+#nfmuwtlzpk .gt_summary_row {
+  color: #000000;
+  background-color: #FFFFFF;
+  /* summary_row.background.color */
+  padding: 8px;
+  /* summary_row.padding */
+  text-transform: inherit;
+  /* summary_row.text_transform */
+}
+
+#nfmuwtlzpk .gt_grand_summary_row {
+  color: #000000;
+  background-color: #FFFFFF;
+  /* grand_summary_row.background.color */
+  padding: 8px;
+  /* grand_summary_row.padding */
+  text-transform: inherit;
+  /* grand_summary_row.text_transform */
+}
+
+#nfmuwtlzpk .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+}
+
+#nfmuwtlzpk .gt_first_grand_summary_row {
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #A8A8A8;
+}
+
+#nfmuwtlzpk .gt_table_body {
+  border-top-style: solid;
+  /* table_body.border.top.style */
+  border-top-width: 2px;
+  /* table_body.border.top.width */
+  border-top-color: #A8A8A8;
+  /* table_body.border.top.color */
+  border-bottom-style: solid;
+  /* table_body.border.bottom.style */
+  border-bottom-width: 2px;
+  /* table_body.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* table_body.border.bottom.color */
+}
+
+#nfmuwtlzpk .gt_footnote {
+  font-size: 90%;
+  /* footnote.font.size */
+  padding: 4px;
+  /* footnote.padding */
+}
+
+#nfmuwtlzpk .gt_sourcenote {
+  font-size: 90%;
+  /* sourcenote.font.size */
+  padding: 4px;
+  /* sourcenote.padding */
+}
+
+#nfmuwtlzpk .gt_center {
+  text-align: center;
+}
+
+#nfmuwtlzpk .gt_left {
+  text-align: left;
+}
+
+#nfmuwtlzpk .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#nfmuwtlzpk .gt_font_normal {
+  font-weight: normal;
+}
+
+#nfmuwtlzpk .gt_font_bold {
+  font-weight: bold;
+}
+
+#nfmuwtlzpk .gt_font_italic {
+  font-style: italic;
+}
+
+#nfmuwtlzpk .gt_super {
+  font-size: 65%;
+}
+
+#nfmuwtlzpk .gt_footnote_glyph {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="nfmuwtlzpk" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><!--gt table start-->
+<table class='gt_table'>
+<tr>
+<th class='gt_col_heading gt_right' rowspan='1' colspan='1'>X</th>
+<th class='gt_col_heading gt_center' rowspan='1' colspan='1'>Covariate</th>
+<th class='gt_col_heading gt_center' rowspan='1' colspan='1'>Description</th>
+</tr>
+<tbody class='gt_table_body'>
+<tr>
+<td class='gt_row gt_right'>1</td>
+<td class='gt_row gt_center'>any_cvd</td>
+<td class='gt_row gt_center'>Any Cardiovascular Disease (CVD) Since Baseline?</td>
+</tr>
+<tr>
+<td class='gt_row gt_right gt_striped'>2</td>
+<td class='gt_row gt_center gt_striped'>age_s1</td>
+<td class='gt_row gt_center gt_striped'>Age at Sleep Heart Health Study Visit One (SHHS1)</td>
+</tr>
+<tr>
+<td class='gt_row gt_right'>3</td>
+<td class='gt_row gt_center'>gender</td>
+<td class='gt_row gt_center'>Gender</td>
+</tr>
+<tr>
+<td class='gt_row gt_right gt_striped'>4</td>
+<td class='gt_row gt_center gt_striped'>race</td>
+<td class='gt_row gt_center gt_striped'>Race</td>
+</tr>
+<tr>
+<td class='gt_row gt_right'>5</td>
+<td class='gt_row gt_center'>bmi_s1</td>
+<td class='gt_row gt_center'>Body mass index (BMI) (Sleep Heart Health Study Visit One (SHHS1))</td>
+</tr>
+<tr>
+<td class='gt_row gt_right gt_striped'>6</td>
+<td class='gt_row gt_center gt_striped'>neck20</td>
+<td class='gt_row gt_center gt_striped'>Neck Circumference (Sleep Heart Health Study Visit One (SHHS1))</td>
+</tr>
+<tr>
+<td class='gt_row gt_right'>7</td>
+<td class='gt_row gt_center'>systbp</td>
+<td class='gt_row gt_center'>Average Systolic blood pressure (BP) (Sleep Heart Health Study Visit One (SHHS1))</td>
+</tr>
+<tr>
+<td class='gt_row gt_right gt_striped'>8</td>
+<td class='gt_row gt_center gt_striped'>chol</td>
+<td class='gt_row gt_center gt_striped'>Cholesterol</td>
+</tr>
+<tr>
+<td class='gt_row gt_right'>9</td>
+<td class='gt_row gt_center'>hdl</td>
+<td class='gt_row gt_center'>High-density lipoprotein (HDL) cholesterol</td>
+</tr>
+<tr>
+<td class='gt_row gt_right gt_striped'>10</td>
+<td class='gt_row gt_center gt_striped'>ahi_a0h3</td>
+<td class='gt_row gt_center gt_striped'>Apnea-Hypopnea Index (AHI) &gt;= 3% - number of [all apneas] and [hypopneas with &gt;= 3% oxygen desaturation] per hour of sleep</td>
+</tr>
+</tbody>
+</table>
+<!--gt table end-->
+</div>
+---
+# Workshop is split over multiple days
 
 .pull-left[
-- Biology of Sleep
-- Data Quality Issues 
-- Exploring the Dataset 
-- Building a predictive model
-- Reporting your predictive model
+- **Day 1** (8 Hrs):
+  - Logistics
+  - Intro to sleep data
+  - Intro to data reuse and data quality
+  - Data exploration of sleep data
+  - Intro to logistic regression
+  ]
+.pull-right[
+- **Day 2** (2 hrs): 
+  - Logistic regression Q&amp;A
+  - Assignment: Is Race appropriate?
+- **Day 3** (2 hrs):
+  - Is hypertension appropriate?
+  - Final presentation prep
+- **Day 4** (1.5 hrs):
+  - Final Presentation by groups
 ]
 
-.pull-right[![](image/cdw.png)]
+---
+# Social Learning
+
+- Code of Conduct
+- Introduce students to each other
+- Psychological Safety
+- Diverse/Heterogeneous teams 
+
+.footnote[[What Every Data Scientist Should Know about Education](https://resources.rstudio.com/webinars/what-every-data-scientist-should-know-about-education-greg-wilson)]
 
 ---
+
+# Lecture: Background about Sleep
+
+- Eilis Boudreau: Sleep Neurologist
+- Role of sleep disorders in cardiovascular disease 
+- How we measure sleep disorders
+
+&lt;img src="image/Obstruction_ventilation_apnée_sommeil.svg" height = 350&gt;
+
+.footnote[https://en.wikipedia.org/wiki/Sleep_apnea#/media/File:Obstruction_ventilation_apn%C3%A9e_sommeil.svg]
+
+---
+
+# Lecture: Data Reuse and Data Quality Issues
+
+- Nicole Weiskopf
+- Expose students early on to data quality issues
+- Hazards and bonuses of data reuse
+- Biases of Clinical Data
+
+&lt;img src="image/healthcare-data.png" height = 350&gt;
+---
+
 # Making Decisions by Exploring Data
 
-- Shiny app (burro) that lets students explore dataset
+.pull-left[
+- Shiny app (burro) that lets students explore dataset interactively
 - Code-less, assumes no coding expertise
-
-&lt;img src="image/categorical.gif" height= 400&gt;
+- Can be deployed as a website
+]
+.pull-right[
+![](image/burro2.png)
+]
 
 ---
+# burro: Visual Summary of the Data
+
+&lt;img src = "image/visdat.png" height = 500&gt;
+
+![visdat package by Nick Tierney](http://visdat.njtierney.com/)
+---
+
+# burro: Exploring Relationships in Data
+
+&lt;img src="image/categorical.gif" height= 500&gt;
+
+---
+
 # Building Predictive Models by Making Decisions
 
-&lt;img src="image/clinical_wrangling.png" height = 400&gt;
+- Rstudio notebook that [guides students through modeling process](https://laderast.github.io/clinical_data_wrangling/notebooks/predictive_model.nb.html)
+  - Choice of covariates
+  - Simple data cleaning/impact on dataset
 ---
+
+# Modeling the Data
+
+- Assessing Impact of logistic regression
+  - Splitting Data: Test/Train Datasets
+  - Diagnostic Testing and their uses
+    - Encourage them to think about how test would be used
+---
+
+# Day 2/3: Iterating your model: what about Race/Hypertension?
+
+- Understanding the contributions of `race`
+  - How is it defined? 
+  - How does our study population compare to the US?
+- Understanding including hypertension as a variable
+  - Medication Lists
+  - Blood pressure measurements
+---
+
+# Day 4: Final Analysis: Making and Documenting Critical Decisions
+
+.pull-left[- Final presentation is an R Notebook
+- What variables did you use at each step?
+- Why did you include them?
+- What were your values?
+- How did that affect your results?]
+
+.pull-right[&lt;img src="image/clinical_wrangling.png" height = 300&gt;]
+
+---
+
+# Challenges: There is no right answer
+
+- Students wanted to choose an "optimal" threshold
+- Challenges in understanding importance of how a clinical test would be used
+
+---
+
 # Outcomes
 
+- Sets the tone for our program
+- Good opportunity for clinical/bioinformatics students to meet
 - Currently assessing impact on students
 
 ---
-# BMI569: Data Analytics
 
-- Summer Hybrid Course taught jointly with Kaiser Permanente
-- Focus on helping make decisions in a Health Care Setting
-- Sociotechnical challenges in implementing a predictive model
-  - Implementing a predictive model (R-based)
-  - Organizational Lectures and Challenges from Kaiser
-  
-.footnote[David Dorr, Tracy Edinger, *Ted Laderas*, Shannon McWeeney, *Delilah Moore*, and *Brian Sikora*]
+# Extensions: Data Science for MD/PhDs
+
+- Reframe as clinical case (Kristen Stevens)
+
+&lt;img src="image/md-phd.png" height=400&gt;
 
 ---
-# BMI569: Practical Coursework
 
-- 8 weeks online coursework in R/SQL and 1 week in person
-- Patients assess and query a simulated data warehouse
-- Rmarkdown document based assignments
-  - provide guidance 
-- http://laderast.github.io/AnalyticsCourse
+## Extensions: Data Scavenger Hunts
 
+.pull-left[ - Exploring the NHANES dataset ]
+.pull-right[![](image/Hex-BDP-small.png)]
 ---
-# Mixing Clinical and Bioinformatics
 
-- Roughly 50% Clinical/50% Bioinformatics
-- Opportunity! Pair them up for joint learning
-- Learn skills and challenges from each other
-
----
-# Goals
-
-.pull-left[
-- Predict 30-day hospital readmissions
-- Joining/Querying/Data
-- Implementing the LACE metric and assessing it
-- Kaiser Experience in Implementation and Impact
-- Communicating your results to an executive team]
-
-.pull-right[![](image/lace.png)
-]
-
-.footnote[https://greatplainsqin.org/wp-content/uploads/2015/01/Lace-Index-Scoring-Tool.pdf]
-
----
-# Analytics Course: Successes
-
-- Nominated for a course award by our students
-- Students have gone on to work for Kaiser
-
----
-# BioData Club
-
-.pull-left[
-- Lifelong Learning Group about Data Science
-- Cross Disciplinary / Hierarchy Flattening
-- Psychologically safe space to learn 
-- Teaching Opportunity
-- Lots of workshops/social activities!
-]
-
--.pull-right[
-&lt;img src="image/Hex-BDP-small.png" height = 400&gt;
-]
-
-.footnote[http://biodataclub.github.io]
-
----
-# BioData Club Kit 
-
-- Start a BioData Club at your Institution!
-- Part of CD2H (Center for Data to Health)
-- Contact me if interested!
-
-&lt;img src="image/CD2H-logo.png" height = 300&gt;
-
----
-# Student Successes
-
-- Gabrielle Choonoo
-- Connor Smith
-
----
-# Gabrielle Choonoo
-
-"Genomic Stability of Solid Tumors and Clinical Applications"
-
-![](image/gabby_choonoo.png)
-
----
-# Connor Smith
-
-- OSU Graduate in Biology
-- Thesis: Methylation Effects in AML
-- Now working in a clincal setting!
-
-![](image/forest_plot_connor.png)
----
-# Principles and Values
-
-- Reduce barriers between clinical and computational cultures
-- Pair clinical/bioinformatics students for co-learning
-- Flatten hierarchies for co-learning
-- Value lifelong learning as an attitude
-
----
-# Funding Acknowledgements:
+# Acknowledgements:
 
 - T15 NLM Training Supplement Grant: 5T15LM007088
-- NCATS Center for Data to Health (CD2H) Grant: U24TR002306
+- Susan Redline/Dan Mobley at NSRR
+- Incoming class of 2018 informatics students
+- MD/PhD Students
+- BioData Club Members
 
 ---
-# Keep in Touch!
+
+# Are you interested? 
+
+Keep in touch! We want others to utilize the workshop!
 
 laderast@ohsu.edu | @tladeras | http://laderast.github.io  
 
-- http://laderast.github.io/AnalyticsCourse
-- http://laderast.github.io/burro
-- http://laderast.github.io/clinical_data_wrangling/
-- BioData-Club Kit: http://biodataclubkit.github.io
-
-Learn more about our graduate program!  
-
-- 4/23, 10 AM - 2 PM @ OSU PreHealth Fair (Memorial Union Ballroom)
-- Webinars about 
-  - Clinical and Bioinformatics Majors 
-  - email Lauren Ludwig: ludwigl@ohsu.edu
+- Burro: http://laderast.github.io/burro
+- Workshop: http://laderast.github.io/clinical_data_wrangling/
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

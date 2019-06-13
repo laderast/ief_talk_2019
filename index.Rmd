@@ -1,6 +1,6 @@
 ---
-title: "Teaching Bioinformatics Students about Clinical Data"
-author: "Ted Laderas"
+title: "Conversations about Sleep: Clinical Data Wrangling"
+author: "Ted Laderas, Nicole Weiskopf and Eilis Boudreau"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
@@ -13,9 +13,12 @@ output:
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
+library(gt)
 ```
+
 # Introduction: Ted Laderas
 
+.pull-left[ 
 - Assistant Professor
   - Division of Bioinformatics and Computational Biomedicine 
   - Department of Medical Informatics and Clinical Epidemiology
@@ -25,197 +28,243 @@ options(htmltools.dir.version = FALSE)
   - Interactive Visualization
   - Immunoinformatics
   - Drug Sensitivity/Resistance in Cancer
+  ]
 
+.pull-right[
+![](image/LaderasTed-small.jpg)
+]
 ---
 # Overview
 
-- Why teach bioinformatics students about clinical data?
-  - Encourage translational research
-- How do we teach them?
-  - Clinical Data Wrangling
-  - Data Analytics
-  - BioData Club
-- Who are examples of our success?
-  - Gabby Choonoo
-  - Connor Smith
+- Why clinical data wrangling?
+- Why the workshop?
+- What is the workshop?
+- Components of the workshop
+- Extensions
+- Availability
 
 ---
 # Motivation: Why?
 
+![https://twitter.com/jd_wilko/status/1138899593826131973](image/wilkinson.png)
+
+---
+
+# Applies to Informaticians, Too
+
+![](image/wilkinson-revised.png)
+
+- Emphasize successful informatics being collaboration
 - Research is multi-disciplinary
 - Need for Translational Research Workforce
 - Bridge gaps between computational biology and clinical realms
 
 ---
-# Bioinformatics Students: Clinical Data Opportunities
+# Luckily, there was funding
 
-- Clinical Data Wrangling Workshop
-- BMI569 Data Analytics
-- BioData Club
+- NLM T15 Training Grant Supplement for Data Science
+- Allowed a diverse team to come together:
+    - Eilis Boudreau
+    - Nicole Weiskopf
+    - Me
 
 ---
+
 # Clinical Data Wrangling
 
+- Workshop for incoming graduate students
 - Designed for both clinical and bioinformatics students
+  - Assumes no expertise with R/RStudio
 - Introduce students to data quality issues with clinical data
-- Use Sleep Heart Health Study data
-  - Partnership with http://sleepdata.org
-- http://laderast.github.io/clinical_data_wrangling/
 
-.footnote[Eilis Boudreau, Ted Laderas, Nicole Weiskopf]
 ---
-# The Goal: build a predictive model of Cardiovascular Disease
+
+# Learning Objectives
+
+1. **Understand** the biology of sleep and sleep apnea and how the biology informs the covariates measured in the Sleep Heart Health Study
+1. **Understand** the usefulness and challenges with working with clinical data
+1. **Learn** Exploratory Data Analysis techniques and use them to **inform/analyse** model building
+1. **Evaluate** a predictive model (logistic regression) using simple diagnostics.
+1. **Communicate** your findings in a team setting.
+---
+
+# Challenges: Where to get data?
+
+- Partnership with National Sleep Research Resource 
+    - http://sleepdata.org
+- Sleep Heart Health Study data 
+    - ~5700 patients, 1200 covariates
+- Requires students to sign [data use agreement]()
+
+---
+## Sleep Covariates
+
+```{r echo=FALSE}
+dict <- read.csv("data_description.csv")
+gt(dict[1:10,])
+```
+---
+# Workshop is split over multiple days
 
 .pull-left[
-- Biology of Sleep
-- Data Quality Issues 
-- Exploring the Dataset 
-- Building a predictive model
-- Reporting your predictive model
+- **Day 1** (8 Hrs):
+  - Logistics
+  - Intro to sleep data
+  - Intro to data reuse and data quality
+  - Data exploration of sleep data
+  - Intro to logistic regression
+  ]
+.pull-right[
+- **Day 2** (2 hrs): 
+  - Logistic regression Q&A
+  - Assignment: Is Race appropriate?
+- **Day 3** (2 hrs):
+  - Is hypertension appropriate?
+  - Final presentation prep
+- **Day 4** (1.5 hrs):
+  - Final Presentation by groups
 ]
 
-.pull-right[![](image/cdw.png)]
+---
+# Social Learning
+
+- Code of Conduct
+- Introduce students to each other
+- Psychological Safety
+- Diverse/Heterogeneous teams 
+
+.footnote[[What Every Data Scientist Should Know about Education](https://resources.rstudio.com/webinars/what-every-data-scientist-should-know-about-education-greg-wilson)]
 
 ---
+
+# Lecture: Background about Sleep
+
+- Eilis Boudreau: Sleep Neurologist
+- Role of sleep disorders in cardiovascular disease 
+- How we measure sleep disorders
+
+<img src="image/Obstruction_ventilation_apnée_sommeil.svg" height = 350>
+
+.footnote[https://en.wikipedia.org/wiki/Sleep_apnea#/media/File:Obstruction_ventilation_apn%C3%A9e_sommeil.svg]
+
+---
+
+# Lecture: Data Reuse and Data Quality Issues
+
+- Nicole Weiskopf
+- Expose students early on to data quality issues
+- Hazards and bonuses of data reuse
+- Biases of Clinical Data
+
+<img src="image/healthcare-data.png" height = 350>
+---
+
 # Making Decisions by Exploring Data
 
-- Shiny app (burro) that lets students explore dataset
+.pull-left[
+- Shiny app (burro) that lets students explore dataset interactively
 - Code-less, assumes no coding expertise
-
-<img src="image/categorical.gif" height= 400>
+- Can be deployed as a website
+]
+.pull-right[
+![](image/burro2.png)
+]
 
 ---
+# burro: Visual Summary of the Data
+
+<img src = "image/visdat.png" height = 500>
+
+![visdat package by Nick Tierney](http://visdat.njtierney.com/)
+---
+
+# burro: Exploring Relationships in Data
+
+<img src="image/categorical.gif" height= 500>
+
+---
+
 # Building Predictive Models by Making Decisions
 
-<img src="image/clinical_wrangling.png" height = 400>
+- Rstudio notebook that [guides students through modeling process](https://laderast.github.io/clinical_data_wrangling/notebooks/predictive_model.nb.html)
+  - Choice of covariates
+  - Simple data cleaning/impact on dataset
 ---
+
+# Modeling the Data
+
+- Assessing Impact of logistic regression
+  - Splitting Data: Test/Train Datasets
+  - Diagnostic Testing and their uses
+    - Encourage them to think about how test would be used
+---
+
+# Day 2/3: Iterating your model: what about Race/Hypertension?
+
+- Understanding the contributions of `race`
+  - How is it defined? 
+  - How does our study population compare to the US?
+- Understanding including hypertension as a variable
+  - Medication Lists
+  - Blood pressure measurements
+---
+
+# Day 4: Final Analysis: Making and Documenting Critical Decisions
+
+.pull-left[- Final presentation is an R Notebook
+- What variables did you use at each step?
+- Why did you include them?
+- What were your values?
+- How did that affect your results?]
+
+.pull-right[<img src="image/clinical_wrangling.png" height = 300>]
+
+---
+
+# Challenges: There is no right answer
+
+- Students wanted to choose an "optimal" threshold
+- Challenges in understanding importance of how a clinical test would be used
+
+---
+
 # Outcomes
 
+- Sets the tone for our program
+- Good opportunity for clinical/bioinformatics students to meet
 - Currently assessing impact on students
 
 ---
-# BMI569: Data Analytics
 
-- Summer Hybrid Course taught jointly with Kaiser Permanente
-- Focus on helping make decisions in a Health Care Setting
-- Sociotechnical challenges in implementing a predictive model
-  - Implementing a predictive model (R-based)
-  - Organizational Lectures and Challenges from Kaiser
-  
-.footnote[David Dorr, Tracy Edinger, *Ted Laderas*, Shannon McWeeney, *Delilah Moore*, and *Brian Sikora*]
+# Extensions: Data Science for MD/PhDs
+
+- Reframe as clinical case (Kristen Stevens)
+
+<img src="image/md-phd.png" height=400>
 
 ---
-# BMI569: Practical Coursework
 
-- 8 weeks online coursework in R/SQL and 1 week in person
-- Patients assess and query a simulated data warehouse
-- Rmarkdown document based assignments
-  - provide guidance 
-- http://laderast.github.io/AnalyticsCourse
+## Extensions: Data Scavenger Hunts
 
+.pull-left[ - Exploring the NHANES dataset ]
+.pull-right[![](image/Hex-BDP-small.png)]
 ---
-# Mixing Clinical and Bioinformatics
 
-- Roughly 50% Clinical/50% Bioinformatics
-- Opportunity! Pair them up for joint learning
-- Learn skills and challenges from each other
-
----
-# Goals
-
-.pull-left[
-- Predict 30-day hospital readmissions
-- Joining/Querying/Data
-- Implementing the LACE metric and assessing it
-- Kaiser Experience in Implementation and Impact
-- Communicating your results to an executive team]
-
-.pull-right[![](image/lace.png)
-]
-
-.footnote[https://greatplainsqin.org/wp-content/uploads/2015/01/Lace-Index-Scoring-Tool.pdf]
-
----
-# Analytics Course: Successes
-
-- Nominated for a course award by our students
-- Students have gone on to work for Kaiser
-
----
-# BioData Club
-
-.pull-left[
-- Lifelong Learning Group about Data Science
-- Cross Disciplinary / Hierarchy Flattening
-- Psychologically safe space to learn 
-- Teaching Opportunity
-- Lots of workshops/social activities!
-]
-
--.pull-right[
-<img src="image/Hex-BDP-small.png" height = 400>
-]
-
-.footnote[http://biodataclub.github.io]
-
----
-# BioData Club Kit 
-
-- Start a BioData Club at your Institution!
-- Part of CD2H (Center for Data to Health)
-- Contact me if interested!
-
-<img src="image/CD2H-logo.png" height = 300>
-
----
-# Student Successes
-
-- Gabrielle Choonoo
-- Connor Smith
-
----
-# Gabrielle Choonoo
-
-"Genomic Stability of Solid Tumors and Clinical Applications"
-
-![](image/gabby_choonoo.png)
-
----
-# Connor Smith
-
-- OSU Graduate in Biology
-- Thesis: Methylation Effects in AML
-- Now working in a clincal setting!
-
-![](image/forest_plot_connor.png)
----
-# Principles and Values
-
-- Reduce barriers between clinical and computational cultures
-- Pair clinical/bioinformatics students for co-learning
-- Flatten hierarchies for co-learning
-- Value lifelong learning as an attitude
-
----
-# Funding Acknowledgements:
+# Acknowledgements:
 
 - T15 NLM Training Supplement Grant: 5T15LM007088
-- NCATS Center for Data to Health (CD2H) Grant: U24TR002306
+- Susan Redline/Dan Mobley at NSRR
+- Incoming class of 2018 informatics students
+- MD/PhD Students
+- BioData Club Members
 
 ---
-# Keep in Touch!
+
+# Are you interested? 
+
+Keep in touch! We want others to utilize the workshop!
 
 laderast@ohsu.edu | @tladeras | http://laderast.github.io  
 
-- http://laderast.github.io/AnalyticsCourse
-- http://laderast.github.io/burro
-- http://laderast.github.io/clinical_data_wrangling/
-- BioData-Club Kit: http://biodataclubkit.github.io
-
-Learn more about our graduate program!  
-
-- 4/23, 10 AM - 2 PM @ OSU PreHealth Fair (Memorial Union Ballroom)
-- Webinars about 
-  - Clinical and Bioinformatics Majors 
-  - email Lauren Ludwig: ludwigl@ohsu.edu
-  
+- Burro: http://laderast.github.io/burro
+- Workshop: http://laderast.github.io/clinical_data_wrangling/
