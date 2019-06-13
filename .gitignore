@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
+common_data_small.rds
+shhs-data-dictionary-0.13.1-variables.csv
