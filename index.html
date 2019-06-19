@@ -3,18 +3,18 @@
   <head>
     <title>Conversations about Sleep: Clinical Data Wrangling</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Ted Laderas, Nicole Weiskopf and Eilis Boudreau" />
-    <meta name="date" content="2019-06-19" />
+    <meta name="author" content="Ted Laderas, Nicole Weiskopf and Eilis Boudreau Medical Informatics and Clinical Epidemiology Oregon Health &amp; Science University" />
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
   </head>
   <body>
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
 # Conversations about Sleep: Clinical Data Wrangling
-### Ted Laderas, Nicole Weiskopf and Eilis Boudreau
-### 2019-06-19
+### Ted Laderas, Nicole Weiskopf and Eilis Boudreau<br><span style="font-size: 65%;">Medical Informatics and Clinical Epidemiology<br>Oregon Health &amp; Science University</span>
+### IEF 2019<br><br><i class="fas  fa-link "></i> <a href="http://bit.ly/ted-ief2019">bit.ly/ted-ief2019</a><br><i class="fab  fa-twitter "></i> <a href="https://twitter.com/tladeras">tladeras</a>
 
 ---
 
@@ -28,19 +28,18 @@ background-size: 7%
 # Introduction: Ted Laderas
 
 .pull-left[ 
-- Assistant Professor
-  - Division of Bioinformatics and Computational Biomedicine 
+- Assistant Professor, Oregon Health &amp; Science University
   - Department of Medical Informatics and Clinical Epidemiology
-  - Oregon Health &amp; Science University
+  - Division of Bioinformatics and Computational Biomedicine 
 - Research Interests
-  - Education (active learning)
-  - Interactive Visualization
+  - **Education (active learning)**
+  - **Interactive Visualization**
   - Immunoinformatics
   - Drug Sensitivity/Resistance in Cancer
   ]
 
 .pull-right[
-&lt;img src = "image/LaderasTed-small.jpg" height = 400&gt;
+&lt;img src = "image/LaderasTed-small.jpg" height = 300&gt;
 ]
 ---
 # Overview
@@ -80,20 +79,31 @@ background-size: 7%
 ---
 # Clinical Data Wrangling
 
+.pull-left[
 - Workshop for incoming graduate students
 - Designed for both clinical and bioinformatics students
   - Assumes no expertise with R/RStudio
 - Introduce students to data quality issues with clinical data
+]
+
+.pull-right[
+&lt;img src = "image/data-wrangling.png" height = 400&gt;
+]
 
 ---
 
 # Learning Objectives
 
+.pull-left[
 1. **Understand** the biology of sleep and sleep apnea and how the biology informs the covariates measured in the Sleep Heart Health Study
 1. **Understand** the usefulness and challenges with working with clinical data
 1. **Learn** Exploratory Data Analysis techniques and use them to **inform/analyse** model building
-1. **Evaluate** a predictive model (logistic regression) using simple diagnostics.
+1. **Build** and **Evaluate** a predictive model (logistic regression) using simple diagnostics.
 1. **Communicate** your findings in a team setting.
+]
+.pull-right[
+&lt;img src = "image/data-wrangling.png" height = 400&gt;
+]
 ---
 
 # Challenges: Where to get data?
@@ -111,7 +121,7 @@ background-size: 7%
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#qgmsbhbcoj .gt_table {
+#ckkpvorzki .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -130,13 +140,13 @@ background-size: 7%
   /* table.border.top.color */
 }
 
-#qgmsbhbcoj .gt_heading {
+#ckkpvorzki .gt_heading {
   background-color: #FFFFFF;
   /* heading.background.color */
   border-bottom-color: #FFFFFF;
 }
 
-#qgmsbhbcoj .gt_title {
+#ckkpvorzki .gt_title {
   color: #000000;
   font-size: 125%;
   /* heading.title.font.size */
@@ -147,7 +157,7 @@ background-size: 7%
   border-bottom-width: 0;
 }
 
-#qgmsbhbcoj .gt_subtitle {
+#ckkpvorzki .gt_subtitle {
   color: #000000;
   font-size: 85%;
   /* heading.subtitle.font.size */
@@ -158,7 +168,7 @@ background-size: 7%
   border-top-width: 0;
 }
 
-#qgmsbhbcoj .gt_bottom_border {
+#ckkpvorzki .gt_bottom_border {
   border-bottom-style: solid;
   /* heading.border.bottom.style */
   border-bottom-width: 2px;
@@ -167,7 +177,7 @@ background-size: 7%
   /* heading.border.bottom.color */
 }
 
-#qgmsbhbcoj .gt_column_spanner {
+#ckkpvorzki .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #A8A8A8;
@@ -175,7 +185,7 @@ background-size: 7%
   padding-bottom: 4px;
 }
 
-#qgmsbhbcoj .gt_col_heading {
+#ckkpvorzki .gt_col_heading {
   color: #000000;
   background-color: #FFFFFF;
   /* column_labels.background.color */
@@ -188,11 +198,11 @@ background-size: 7%
   margin: 10px;
 }
 
-#qgmsbhbcoj .gt_sep_right {
+#ckkpvorzki .gt_sep_right {
   border-right: 5px solid #FFFFFF;
 }
 
-#qgmsbhbcoj .gt_group_heading {
+#ckkpvorzki .gt_group_heading {
   padding: 8px;
   color: #000000;
   background-color: #FFFFFF;
@@ -216,7 +226,7 @@ background-size: 7%
   vertical-align: middle;
 }
 
-#qgmsbhbcoj .gt_empty_group_heading {
+#ckkpvorzki .gt_empty_group_heading {
   padding: 0.5px;
   color: #000000;
   background-color: #FFFFFF;
@@ -240,33 +250,33 @@ background-size: 7%
   vertical-align: middle;
 }
 
-#qgmsbhbcoj .gt_striped {
+#ckkpvorzki .gt_striped {
   background-color: #f2f2f2;
 }
 
-#qgmsbhbcoj .gt_from_md > :first-child {
+#ckkpvorzki .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qgmsbhbcoj .gt_from_md > :last-child {
+#ckkpvorzki .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qgmsbhbcoj .gt_row {
+#ckkpvorzki .gt_row {
   padding: 8px;
   /* row.padding */
   margin: 10px;
   vertical-align: middle;
 }
 
-#qgmsbhbcoj .gt_stub {
+#ckkpvorzki .gt_stub {
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #A8A8A8;
   padding-left: 12px;
 }
 
-#qgmsbhbcoj .gt_summary_row {
+#ckkpvorzki .gt_summary_row {
   color: #000000;
   background-color: #FFFFFF;
   /* summary_row.background.color */
@@ -276,7 +286,7 @@ background-size: 7%
   /* summary_row.text_transform */
 }
 
-#qgmsbhbcoj .gt_grand_summary_row {
+#ckkpvorzki .gt_grand_summary_row {
   color: #000000;
   background-color: #FFFFFF;
   /* grand_summary_row.background.color */
@@ -286,19 +296,19 @@ background-size: 7%
   /* grand_summary_row.text_transform */
 }
 
-#qgmsbhbcoj .gt_first_summary_row {
+#ckkpvorzki .gt_first_summary_row {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
 }
 
-#qgmsbhbcoj .gt_first_grand_summary_row {
+#ckkpvorzki .gt_first_grand_summary_row {
   border-top-style: double;
   border-top-width: 6px;
   border-top-color: #A8A8A8;
 }
 
-#qgmsbhbcoj .gt_table_body {
+#ckkpvorzki .gt_table_body {
   border-top-style: solid;
   /* table_body.border.top.style */
   border-top-width: 2px;
@@ -313,55 +323,55 @@ background-size: 7%
   /* table_body.border.bottom.color */
 }
 
-#qgmsbhbcoj .gt_footnote {
+#ckkpvorzki .gt_footnote {
   font-size: 90%;
   /* footnote.font.size */
   padding: 4px;
   /* footnote.padding */
 }
 
-#qgmsbhbcoj .gt_sourcenote {
+#ckkpvorzki .gt_sourcenote {
   font-size: 90%;
   /* sourcenote.font.size */
   padding: 4px;
   /* sourcenote.padding */
 }
 
-#qgmsbhbcoj .gt_center {
+#ckkpvorzki .gt_center {
   text-align: center;
 }
 
-#qgmsbhbcoj .gt_left {
+#ckkpvorzki .gt_left {
   text-align: left;
 }
 
-#qgmsbhbcoj .gt_right {
+#ckkpvorzki .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qgmsbhbcoj .gt_font_normal {
+#ckkpvorzki .gt_font_normal {
   font-weight: normal;
 }
 
-#qgmsbhbcoj .gt_font_bold {
+#ckkpvorzki .gt_font_bold {
   font-weight: bold;
 }
 
-#qgmsbhbcoj .gt_font_italic {
+#ckkpvorzki .gt_font_italic {
   font-style: italic;
 }
 
-#qgmsbhbcoj .gt_super {
+#ckkpvorzki .gt_super {
   font-size: 65%;
 }
 
-#qgmsbhbcoj .gt_footnote_glyph {
+#ckkpvorzki .gt_footnote_glyph {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="qgmsbhbcoj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><!--gt table start-->
+<div id="ckkpvorzki" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><!--gt table start-->
 <table class='gt_table'>
 <tr>
 <th class='gt_col_heading gt_center' rowspan='1' colspan='1'>Covariate</th>
@@ -454,7 +464,7 @@ background-size: 7%
 
 &lt;img src="image/Obstruction_ventilation_apnée_sommeil.svg" height = 350&gt;
 
-.footnote[https://en.wikipedia.org/wiki/Sleep_apnea#/media/File:Obstruction_ventilation_apn%C3%A9e_sommeil.svg]
+.footnote[[Image from Wikipedia](https://en.wikipedia.org/wiki/Sleep_apnea#/media/File:Obstruction_ventilation_apn%C3%A9e_sommeil.svg)]
 
 ---
 
@@ -482,14 +492,20 @@ background-size: 7%
 ---
 # burro: Visual Summary of the Data
 
-&lt;img src = "image/visdat.png" height = 500&gt;
+&lt;img src = "image/visdat.png" height = 450&gt;
 
 .footnote[[visdat package by Nick Tierney](http://visdat.njtierney.com/)]
 ---
 
-# burro: Exploring Relationships in Data
+# burro: Single Categories to CrossTabs
 
-&lt;img src="image/categorical.gif" height= 500&gt;
+&lt;img src="image/categorical.gif" height= 450&gt;
+
+---
+
+# burro: Histograms to Boxplots
+
+&lt;img src="image/continuous-boxplot.gif" height = 450&gt;
 
 ---
 
@@ -498,14 +514,27 @@ background-size: 7%
 - Rstudio notebook that [guides students through modeling process](https://laderast.github.io/clinical_data_wrangling/notebooks/predictive_model.nb.html)
   - Choice of covariates
   - Simple data cleaning/impact on dataset
+  
+![](image/nas.png)
+
 ---
 
 # Modeling the Data
 
+.pull-left[
 - Assessing Impact of logistic regression
-  - Splitting Data: Test/Train Datasets
-  - Diagnostic Testing and their uses
-    - Encourage them to think about how test would be used
+- Understanding and evaluating model predictions
+- Splitting Data: Test/Train Datasets
+- Diagnostic Testing and their uses
+  -Patients who are on the edge
+    ]
+    
+.pull-right[ 
+1. **patient 1** is older 65, Male, and has a higher BMI (44). 
+1. **patient2** is younger 25, Female and has a lower BMI (23). 
+1. **patient3** is a middle aged (42), Female patient with a middling BMI (31).
+]
+
 ---
 
 # Day 2/3: Iterating your model: what about Race/Hypertension?
@@ -513,7 +542,7 @@ background-size: 7%
 - Understanding the contributions of `race`
   - How is it defined? 
   - How does our study population compare to the US?
-- Understanding including hypertension as a variable
+- Understanding `hypertension` as a variable
   - Medication Lists
   - Blood pressure measurements
 ---
@@ -532,7 +561,7 @@ background-size: 7%
 
 # Challenges: There is no right answer
 
-- Students wanted to choose an "optimal" threshold
+- Students wanted to choose an "optimal" threshold for models
 - Challenges in understanding importance of how a clinical test would be used
 
 ---
@@ -541,7 +570,7 @@ background-size: 7%
 
 - Sets the tone for our program
 - Good opportunity for clinical/bioinformatics students to meet
-- Currently assessing impact on students
+- Currently assessing impact on students after 1 year in program
 
 ---
 
@@ -555,12 +584,14 @@ background-size: 7%
 
 # Extensions: Data Scavenger Hunts
 
-.pull-left[ - Exploring the NHANES dataset ]
+.pull-left[ - [[Exploring the NHANES dataset](http://bit.ly/csv_burro) ]
 .pull-right[![](image/Hex-BDP-small.png)]
 ---
 
 # Acknowledgements:
 
+- Bill Hersh
+- Diane Doctor
 - T15 NLM Training Supplement Grant: 5T15LM007088
 - Susan Redline/Dan Mobley at NSRR
 - Incoming class of 2018 informatics students
@@ -575,6 +606,7 @@ Keep in touch! We want others to utilize the workshop!
 
 laderast@ohsu.edu | @tladeras | http://laderast.github.io  
 
+- These slides: http://bit.ly/ted-ief2019
 - Burro: http://laderast.github.io/burro
 - Workshop: http://laderast.github.io/clinical_data_wrangling/
     </textarea>

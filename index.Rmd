@@ -1,7 +1,7 @@
 ---
 title: "Conversations about Sleep: Clinical Data Wrangling"
-author: "Ted Laderas, Nicole Weiskopf and Eilis Boudreau"
-date: "`r Sys.Date()`"
+author: "Ted Laderas, Nicole Weiskopf and Eilis Boudreau<br><span style = 'font-size: 65%;'>Medical Informatics and Clinical Epidemiology<br>Oregon Health & Science University</span>"
+date: 'IEF 2019<br><br>`r icon::fa("link")` [bit.ly/ted-ief2019](http://bit.ly/ted-ief2019)<br>`r icon::fa("twitter")` [tladeras](https://twitter.com/tladeras)'
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -23,19 +23,18 @@ library(gt)
 # Introduction: Ted Laderas
 
 .pull-left[ 
-- Assistant Professor
-  - Division of Bioinformatics and Computational Biomedicine 
+- Assistant Professor, Oregon Health & Science University
   - Department of Medical Informatics and Clinical Epidemiology
-  - Oregon Health & Science University
+  - Division of Bioinformatics and Computational Biomedicine 
 - Research Interests
-  - Education (active learning)
-  - Interactive Visualization
+  - **Education (active learning)**
+  - **Interactive Visualization**
   - Immunoinformatics
   - Drug Sensitivity/Resistance in Cancer
   ]
 
 .pull-right[
-<img src = "image/LaderasTed-small.jpg" height = 400>
+<img src = "image/LaderasTed-small.jpg" height = 300>
 ]
 ---
 # Overview
@@ -75,20 +74,31 @@ library(gt)
 ---
 # Clinical Data Wrangling
 
+.pull-left[
 - Workshop for incoming graduate students
 - Designed for both clinical and bioinformatics students
   - Assumes no expertise with R/RStudio
 - Introduce students to data quality issues with clinical data
+]
+
+.pull-right[
+<img src = "image/data-wrangling.png" height = 400>
+]
 
 ---
 
 # Learning Objectives
 
+.pull-left[
 1. **Understand** the biology of sleep and sleep apnea and how the biology informs the covariates measured in the Sleep Heart Health Study
 1. **Understand** the usefulness and challenges with working with clinical data
 1. **Learn** Exploratory Data Analysis techniques and use them to **inform/analyse** model building
-1. **Evaluate** a predictive model (logistic regression) using simple diagnostics.
+1. **Build** and **Evaluate** a predictive model (logistic regression) using simple diagnostics.
 1. **Communicate** your findings in a team setting.
+]
+.pull-right[
+<img src = "image/data-wrangling.png" height = 400>
+]
 ---
 
 # Challenges: Where to get data?
@@ -148,7 +158,7 @@ gt(dict[1:10,-1])
 
 <img src="image/Obstruction_ventilation_apnée_sommeil.svg" height = 350>
 
-.footnote[https://en.wikipedia.org/wiki/Sleep_apnea#/media/File:Obstruction_ventilation_apn%C3%A9e_sommeil.svg]
+.footnote[[Image from Wikipedia](https://en.wikipedia.org/wiki/Sleep_apnea#/media/File:Obstruction_ventilation_apn%C3%A9e_sommeil.svg)]
 
 ---
 
@@ -181,9 +191,15 @@ gt(dict[1:10,-1])
 .footnote[[visdat package by Nick Tierney](http://visdat.njtierney.com/)]
 ---
 
-# burro: Exploring Relationships in Data
+# burro: Single Categories to CrossTabs
 
-<img src="image/categorical.gif" height= 500>
+<img src="image/categorical.gif" height= 450>
+
+---
+
+# burro: Histograms to Boxplots
+
+<img src="image/continuous-boxplot.gif" height = 450>
 
 ---
 
@@ -192,20 +208,25 @@ gt(dict[1:10,-1])
 - Rstudio notebook that [guides students through modeling process](https://laderast.github.io/clinical_data_wrangling/notebooks/predictive_model.nb.html)
   - Choice of covariates
   - Simple data cleaning/impact on dataset
+  
+![](image/nas.png)
+
 ---
 
 # Modeling the Data
 
 .pull-left[
 - Assessing Impact of logistic regression
-  - understanding the predictive capacity of a model
-  - Splitting Data: Test/Train Datasets
-  - Diagnostic Testing and their uses
+- Understanding and evaluating model predictions
+- Splitting Data: Test/Train Datasets
+- Diagnostic Testing and their uses
+  -Patients who are on the edge
     ]
     
-.pull-right[ 1. **patient 1** is going to be older 65, Male, and have a high BMI (44). Is this patient more likely to have cardiovascular disease or not?
-1. **patient2** is going to be younger 25, Female and have a low BMI (23). Is this patient more likely to have cardiovascular disease or not?
-1. **patient3** is a middle aged (42), Female patient with a middling BMI (31)? Is she more likely to have cardiovascular disease or not?
+.pull-right[ 
+1. **patient 1** is older 65, Male, and has a higher BMI (44). 
+1. **patient2** is younger 25, Female and has a lower BMI (23). 
+1. **patient3** is a middle aged (42), Female patient with a middling BMI (31).
 ]
 
 ---
@@ -234,7 +255,7 @@ gt(dict[1:10,-1])
 
 # Challenges: There is no right answer
 
-- Students wanted to choose an "optimal" threshold
+- Students wanted to choose an "optimal" threshold for models
 - Challenges in understanding importance of how a clinical test would be used
 
 ---
@@ -243,7 +264,7 @@ gt(dict[1:10,-1])
 
 - Sets the tone for our program
 - Good opportunity for clinical/bioinformatics students to meet
-- Currently assessing impact on students
+- Currently assessing impact on students after 1 year in program
 
 ---
 
@@ -257,12 +278,14 @@ gt(dict[1:10,-1])
 
 # Extensions: Data Scavenger Hunts
 
-.pull-left[ - Exploring the NHANES dataset ]
+.pull-left[ - [[Exploring the NHANES dataset](http://bit.ly/csv_burro) ]
 .pull-right[![](image/Hex-BDP-small.png)]
 ---
 
 # Acknowledgements:
 
+- Bill Hersh
+- Diane Doctor
 - T15 NLM Training Supplement Grant: 5T15LM007088
 - Susan Redline/Dan Mobley at NSRR
 - Incoming class of 2018 informatics students
@@ -277,6 +300,6 @@ Keep in touch! We want others to utilize the workshop!
 
 laderast@ohsu.edu | @tladeras | http://laderast.github.io  
 
+- These slides: http://bit.ly/ted-ief2019
 - Burro: http://laderast.github.io/burro
 - Workshop: http://laderast.github.io/clinical_data_wrangling/
-
