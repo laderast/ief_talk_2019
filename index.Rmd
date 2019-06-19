@@ -10,12 +10,16 @@ output:
       highlightLines: true
       countIncrementalSlides: false
 ---
+layout: true
+background-image: url(image/ohsu.png)
+background-position: 95% 5%
+background-size: 7%
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 library(gt)
 ```
-
+---
 # Introduction: Ted Laderas
 
 .pull-left[ 
@@ -31,7 +35,7 @@ library(gt)
   ]
 
 .pull-right[
-![](image/LaderasTed-small.jpg)
+<img src = "image/LaderasTed-small.jpg" height = 400>
 ]
 ---
 # Overview
@@ -64,12 +68,11 @@ library(gt)
 
 - NLM T15 Training Grant Supplement for Data Science
 - Allowed a diverse team to come together:
-    - Eilis Boudreau
-    - Nicole Weiskopf
-    - Me
+    - Eilis Boudreau, MD/PhD (Sleep Neurologist)
+    - Nicole Weiskopf, PhD (EHR Data Quality)
+    - Ted Laderas, PhD (Education, Interactive Visualization)
 
 ---
-
 # Clinical Data Wrangling
 
 - Workshop for incoming graduate students
@@ -101,7 +104,7 @@ library(gt)
 
 ```{r echo=FALSE}
 dict <- read.csv("data_description.csv")
-gt(dict[1:10,])
+gt(dict[1:10,-1])
 ```
 ---
 # Workshop is split over multiple days
@@ -173,9 +176,9 @@ gt(dict[1:10,])
 ---
 # burro: Visual Summary of the Data
 
-<img src = "image/visdat.png" height = 500>
+<img src = "image/visdat.png" height = 450>
 
-![visdat package by Nick Tierney](http://visdat.njtierney.com/)
+.footnote[[visdat package by Nick Tierney](http://visdat.njtierney.com/)]
 ---
 
 # burro: Exploring Relationships in Data
@@ -193,10 +196,18 @@ gt(dict[1:10,])
 
 # Modeling the Data
 
+.pull-left[
 - Assessing Impact of logistic regression
+  - understanding the predictive capacity of a model
   - Splitting Data: Test/Train Datasets
   - Diagnostic Testing and their uses
-    - Encourage them to think about how test would be used
+    ]
+    
+.pull-right[ 1. **patient 1** is going to be older 65, Male, and have a high BMI (44). Is this patient more likely to have cardiovascular disease or not?
+1. **patient2** is going to be younger 25, Female and have a low BMI (23). Is this patient more likely to have cardiovascular disease or not?
+1. **patient3** is a middle aged (42), Female patient with a middling BMI (31)? Is she more likely to have cardiovascular disease or not?
+]
+
 ---
 
 # Day 2/3: Iterating your model: what about Race/Hypertension?
@@ -204,7 +215,7 @@ gt(dict[1:10,])
 - Understanding the contributions of `race`
   - How is it defined? 
   - How does our study population compare to the US?
-- Understanding including hypertension as a variable
+- Understanding `hypertension` as a variable
   - Medication Lists
   - Blood pressure measurements
 ---
@@ -244,7 +255,7 @@ gt(dict[1:10,])
 
 ---
 
-## Extensions: Data Scavenger Hunts
+# Extensions: Data Scavenger Hunts
 
 .pull-left[ - Exploring the NHANES dataset ]
 .pull-right[![](image/Hex-BDP-small.png)]
@@ -268,3 +279,4 @@ laderast@ohsu.edu | @tladeras | http://laderast.github.io
 
 - Burro: http://laderast.github.io/burro
 - Workshop: http://laderast.github.io/clinical_data_wrangling/
+
