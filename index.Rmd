@@ -218,6 +218,11 @@ gt(dict[1:10,-1])
 <img src="image/continuous-boxplot.gif" height = 450>
 
 ---
+# Try burro out!
+
+http://bit.ly/csv_burro 
+
+---
 
 # Building Predictive Models by Making Decisions
 
