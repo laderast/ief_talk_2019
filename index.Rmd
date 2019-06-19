@@ -278,7 +278,10 @@ gt(dict[1:10,-1])
 
 # Extensions: Data Scavenger Hunts
 
-.pull-left[ - [[Exploring the NHANES dataset](http://bit.ly/csv_burro) ]
+.pull-left[ 
+- [Exploring the NHANES dataset](http://bit.ly/csv_burro)
+- [OHSU BioData Club activity](http://biodata-club.github.io)
+]
 .pull-right[![](image/Hex-BDP-small.png)]
 ---
 
