@@ -11,14 +11,19 @@ output:
       countIncrementalSlides: false
 ---
 layout: true
-background-image: url(image/ohsu.png)
-background-position: 95% 5%
-background-size: 7%
+background-image: url(image/ohsu.png), url(image/logo.png)
+background-position: 95% 5%, 95% 95%
+background-size: 7%, 20%
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 library(gt)
 ```
+---
+# Disclosure
+
+No disclosures to report.
+
 ---
 # Introduction: Ted Laderas
 
@@ -29,6 +34,7 @@ library(gt)
 - Research Interests
   - **Education (active learning)**
   - **Interactive Visualization**
+  - **Open Science**
   - Immunoinformatics
   - Drug Sensitivity/Resistance in Cancer
   ]
