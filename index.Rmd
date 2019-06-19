@@ -25,6 +25,13 @@ library(gt)
 No disclosures to report.
 
 ---
+# Learning Objectives for this Session
+
+- **Learn** about the challenges of developing multidisciplinary workshops
+- **Understand** why exploratory data analysis is an important data science skill
+- **Discuss** why iterative learning is helpful in understanding clinical data
+
+---
 # Introduction: Ted Laderas
 
 .pull-left[ 
@@ -82,9 +89,12 @@ No disclosures to report.
 
 .pull-left[
 - Workshop for incoming graduate students
-- Designed for both clinical and bioinformatics students
+- Audience: Clinical/Bioinformatics Students
   - Assumes no expertise with R/RStudio
 - Introduce students to data quality issues with clinical data
+- Context: Secondary use of a clinical dataset
+  - Can we use it for prediction of cardiovascular disease?
+  - What variables can we use?
 ]
 
 .pull-right[
@@ -261,6 +271,7 @@ gt(dict[1:10,-1])
 
 # Challenges: There is no right answer
 
+- Data Use Agreements required for student participation
 - Students wanted to choose an "optimal" threshold for models
 - Challenges in understanding importance of how a clinical test would be used
 
