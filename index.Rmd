@@ -1,7 +1,7 @@
 ---
 title: "Conversations about Sleep: Clinical Data Wrangling"
 author: "Ted Laderas, Nicole Weiskopf and Eilis Boudreau<br><span style = 'font-size: 65%;'>Medical Informatics and Clinical Epidemiology<br>Oregon Health & Science University</span>"
-date: 'IEF 2019<br><br>`r icon::fa("link")` [bit.ly/ted-ief2019](http://bit.ly/ted-ief2019)<br>`r icon::fa("twitter")` [tladeras](https://twitter.com/tladeras)'
+date: 'AMIA Informatics Educators Forum 2019<br><span style = "font-size: 65%;">S15: Interactive Demonstrations - Learning Environments to Support<br> Biomedical Informatics, Data Science, and Clinical Data Quality</span><br>`r icon::fa("link")` [bit.ly/ted-ief2019](http://bit.ly/ted-ief2019)<br>`r icon::fa("twitter")` [tladeras](https://twitter.com/tladeras)'
 output:
   xaringan::moon_reader:
     lib_dir: libs
